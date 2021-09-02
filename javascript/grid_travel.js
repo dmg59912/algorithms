@@ -26,7 +26,8 @@
 
 ///             code
 
-
+// O(2^n + m) time
+// O(n + m) space
 const grid_travel = (m,n) =>{
     if (m === 1 && n === 1) return 1;
     if (m === 0 || n ===  0) return 0;
@@ -35,7 +36,28 @@ const grid_travel = (m,n) =>{
 }
 
 
+// now with momoization 
+// O(m * n) time 
+// O(n + m) space
+const grid_travel2 = ( m,n , memo = {}) => {
+    //are the args in the memo
+    const key = m + ',' + n; // use a space or else will only put one large value, ex key m = 12 and n = 3 would display 123 
+    if(key in memo) return memo[key];
+    if( m === 1 && n === 1) return 1;
+    if ( m === 0 || n === 0) return 0;
+    memo[key] = grid_travel2(m - 1,n, memo) + grid_travel2(m , n -1, memo);
+    return memo[key];
+
+}
+
 console.log("Hello\n\n");
 console.log(grid_travel(1,1));
 console.log(grid_travel(3,2));
 console.log(grid_travel(18,18));
+
+
+console.log("\n\nNow using memoization\n\n");
+console.log(grid_travel2(1,1));
+console.log(grid_travel2(3,2));
+console.log(grid_travel2(18,18));
+
