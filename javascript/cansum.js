@@ -3,3 +3,13 @@
 //numbers from the array 
 //You may use an element of the arrray as many times as needed
 //you may assume all input numbers are nonegative 
+
+//ex camSum(7, [5,3,4,7]) -> true
+//ex camSUm(7, [2,4]) -> false
+
+const canSum = (targetSum, numbers) =>{
+
+}
+
+
+console.log("Can sum first try ");
